@@ -19,8 +19,12 @@ const pathExists = (object, objectPath) => {
   let concatenatedPath = "";
   for (const varPath of path) {
     concatenatedPath += `['${varPath}']`;
-    let data = eval(`object${concatenatedPath}`);
-    if (data === undefined || data === null) {
+    try {
+      let data = eval(`object${concatenatedPath}`);
+      if (data === undefined) {
+        return false;
+      }
+    } catch {
       return false;
     }
   }

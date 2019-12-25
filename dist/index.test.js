@@ -6,7 +6,15 @@ const obj3 = { "123-country": { "123-province": { "123-city": 5 } } };
 const obj4 = {
   "123-element": { "123-batallion": { "123-unit": { "123-squad": { "123-team": "Alpha" } } } }
 };
-const arrObj1 = [{ id: 0, name: "name 0" }, { id: 1, name: "name 1" }];
+const obj5 = {
+  a: null,
+  b: undefined,
+  c: "something"
+};
+const arrObj1 = [
+  { id: 0, name: "name 0" },
+  { id: 1, name: "name 1" }
+];
 const arrObj2 = {
   series: "pokemon",
   name: "pikachu",
@@ -35,6 +43,13 @@ describe("arr - object - intermediate", () => {
   });
 });
 
+describe("using null", () => {
+  it("using null as an example", () => {
+    expect(pathExists(obj5, "a")).toBeTruthy();
+    expect(pathExists(obj5, "a.x")).toBeFalsy();
+    expect(pathExists(obj5, "a.x.y")).toBeFalsy();
+  });
+});
 describe("arr - object - intermediate", () => {
   it("more complex", () => {
     expect(pathExists(arrObj1, "0.id")).toBeTruthy();
